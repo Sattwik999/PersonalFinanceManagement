@@ -1,3 +1,21 @@
+:root {
+    --primary-color: #0f172a;
+    --primary-hover: #1e293b;
+    --secondary-color: #f1f5f9;
+    --accent-color: #0ea5e9;
+    --text-color: #0f172a;
+    --card-bg: #ffffff;
+    --body-bg: #f8fafc;
+}
+.dark-mode {
+    --primary-color: #f8fafc;
+    --primary-hover: #e2e8f0;
+    --secondary-color: #1e293b;
+    --text-color: #f8fafc;
+    --card-bg: #1e293b;
+    --body-bg: #0f172a;
+}
+
 /* Transactions Page Styles */
 .main-content {
     margin-left: 60px; /* Should match collapsed sidebar width */
@@ -18,8 +36,10 @@
     padding: 15px 20px;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    position: sticky;
+    position: fixed;
     top: 0;
+    right: 0;
+    width: auto;
     z-index: 1000;
 }
 

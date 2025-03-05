@@ -170,3 +170,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize the application
     init();
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const toggleDarkMode = document.getElementById("theme-toggle");
+
+    // Check local storage for mode preference
+    if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+    }
+
+    toggleDarkMode.addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
+
+        // Save the theme preference
+        if (document.body.classList.contains("dark-mode")) {
+            localStorage.setItem("theme", "dark");
+        } else {
+            localStorage.setItem("theme", "light");
+        }
+    });
+});

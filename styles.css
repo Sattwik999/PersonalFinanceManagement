@@ -67,30 +67,14 @@
   
   /* Main Content */
   .main-content {
-    margin-left: 60px; /* Default for collapsed sidebar */
-    transition: margin-left 0.3s ease-in-out;
-    padding: 20px;
-  }
-  .sidebar:hover ~ .main-content {
-    margin-left: 180px;
-  }
-  @media screen and (max-width: 768px) {
-    .sidebar {
-      width: 0;
-    }
+    margin-left: 70px;
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
     
-    .sidebar:hover {
-      width: 180px;
-    }
-  
-    .main-content {
-      margin-left: 0;
-    }
-  
-    .sidebar:hover ~ .main-content {
-      margin-left: 180px;
-    }
   }
+  
   /* Top Navigation */
   .top-nav {
     height: var(--header-height);
