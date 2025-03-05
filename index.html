@@ -63,7 +63,7 @@
       height: 70px;
       display: flex;
       align-items: center;
-      padding: 15px;
+     padding-left: 4px;
       background: #1a252f;
       position: sticky;
       top: 0;
@@ -73,7 +73,6 @@
 
     /* Logo */
     .sidebar-logo {
-    margin-left: 0;  
     width: 50px;
       height: 50px;
       transition: all 0.3s ease-in-out;
@@ -446,7 +445,58 @@
             </div>
           </div>
         </div>
-
+        <!-- Quick Bill Pay -->
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Quick Bill Pay</h2>
+            <i class="fas fa-file-invoice-dollar text-muted"></i>
+          </div>
+          <div class="card-body">
+            <div class="bills-list">
+              <div class="bill-item">
+                <div class="bill-info">
+                  <p class="bill-title">Electricity Bill</p>
+                  <p class="bill-date">Due: 2023-07-15</p>
+                </div>
+                <div class="bill-actions">
+                  <span class="bill-amount">$85.00</span>
+                  <button class="btn btn-sm btn-outline pay-bill-btn" data-bill-id="1">Pay</button>
+                </div>
+              </div>
+              <div class="bill-item">
+                <div class="bill-info">
+                  <p class="bill-title">Internet Service</p>
+                  <p class="bill-date">Due: 2023-07-18</p>
+                </div>
+                <div class="bill-actions">
+                  <span class="bill-amount">$60.00</span>
+                  <button class="btn btn-sm btn-outline pay-bill-btn" data-bill-id="2">Pay</button>
+                </div>
+              </div>
+              <div class="bill-item">
+                <div class="bill-info">
+                  <p class="bill-title">Credit Card Payment</p>
+                  <p class="bill-date">Due: 2023-07-25</p>
+                </div>
+                <div class="bill-actions">
+                  <span class="bill-amount">$500.00</span>
+                  <button class="btn btn-sm btn-outline pay-bill-btn" data-bill-id="3">Pay</button>
+                </div>
+              </div>
+              <div class="bill-item">
+                <div class="bill-info">
+                  <p class="bill-title">Water Bill</p>
+                  <p class="bill-date">Due: 2023-07-30</p>
+                </div>
+                <div class="bill-actions">
+                  <span class="bill-amount">$45.00</span>
+                  <button class="btn btn-sm btn-outline pay-bill-btn" data-bill-id="4">Pay</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
         <!-- Financial Chart -->
         <div class="card full-width">
           <div class="card-header">

@@ -230,3 +230,54 @@
     border-color: var(--primary);
     background: var(--primary-tint);
 }
+.filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1); /* Glassmorphic effect */
+    backdrop-filter: blur(10px);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: fit-content;
+    margin: 20px auto;
+}
+    
+    .filter-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    }
+    
+    .date-picker, .filter-select {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: #333;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    }
+    
+    .date-picker:hover, .filter-select:hover {
+    background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .date-picker:focus, .filter-select:focus {
+    outline: none;
+    box-shadow: 0px 0px 10px rgba(0, 123, 255, 0.5);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+    .filters-container {
+    flex-direction: column;
+    width: 90%;
+    }
+    }
+    

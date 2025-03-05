@@ -208,6 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     
+    
     // Pay Bill Modal
     const payBillBtns = document.querySelectorAll('.pay-bill-btn');
     const payBillModal = document.getElementById('pay-bill-modal');

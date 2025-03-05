@@ -1,0 +1,134 @@
+
+        :root {
+    --primary-color: #0f172a;
+    --primary-hover: #1e293b;
+    --secondary-color: #f1f5f9;
+    --accent-color: #0ea5e9;
+    --text-color: #0f172a;
+    --card-bg: #ffffff;
+    --body-bg: #f8fafc;
+}
+.dark-mode {
+    --primary-color: #f8fafc;
+    --primary-hover: #e2e8f0;
+    --secondary-color: #1e293b;
+    --text-color: #f8fafc;
+    --card-bg: #1e293b;
+    --body-bg: #0f172a;
+}
+        /* Sidebar Styles */
+        .sidebar {
+            width: 60px;
+            background: #2c3e50;
+            color: white;
+            height: 100vh;
+            transition: all 0.3s ease-in-out;
+            overflow: hidden;
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar:hover {
+            width: 230px;
+        }
+
+        .sidebar-header {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #1a252f;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .sidebar-logo {
+            margin-left: 0;  
+            width: 50px;
+            height: 50px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .sidebar:hover .sidebar-logo {
+            width: 40px;
+            height: 40px;
+        }
+
+        .sidebar-nav ul li a span,
+        .sidebar-footer ul li a span {
+            opacity: 0;
+            transition: opacity 0.2s;
+            white-space: nowrap;
+        }
+
+        .sidebar:hover .sidebar-nav ul li a span,
+        .sidebar:hover .sidebar-footer ul li a span {
+            opacity: 1;
+        }
+
+        /* Main Content Styles */
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+        }
+
+        .account-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .account-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #3B82F6;
+        }
+
+        .account-card.credit::before { background: #EF4444; }
+        .account-card.savings::before { background: #10B981; }
+        .account-card.investment::before { background: #8B5CF6; }
+
+        .form-input {
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: #3B82F6;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .btn-primary {
+            background: #3B82F6;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .grid-cards {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
