@@ -184,6 +184,8 @@
     <main class="main-content">
       <!-- Top Navigation -->
       <header class="top-nav">
+        <h2 style="font-family: Verdana, Geneva, Tahoma, sans-serif;">SUVRITT</h2>
+        <!-- <p style="position: relative;margin-left: 0px;font-family: cursive;font-size: smaller;">Your One Step Solution for Good Financial Management</p> -->
         <nav class="breadcrumb">
           <a href="#">Home</a>
           <span>/</span>
@@ -199,7 +201,7 @@
           </button>
           <div class="profile-dropdown">
             <button class="profile-btn">
-              <img src="https://github.com/shadcn.png" alt="Profile" class="avatar">
+              <img src="ani.jpg" alt="Profile" class="avatar">
               <i class="fas fa-chevron-down"></i>
             </button>
             <div class="dropdown-menu" id="profile-menu">
@@ -209,7 +211,7 @@
               <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item">Profile</a>
               <a href="#" class="dropdown-item">Settings</a>
-              <a href="#" class="dropdown-item">Logout</a>
+              <a href="landing.html" class="dropdown-item">Logout</a>
             </div>
           </div>
         </div>
@@ -444,8 +446,7 @@
               <button class="btn btn-outline full-width">View Portfolio</button>
             </div>
           </div>
-        </div>
-        <!-- Quick Bill Pay -->
+             <!-- Quick Bill Pay -->
         <div class="card">
           <div class="card-header">
             <h2 class="card-title">Quick Bill Pay</h2>
@@ -497,63 +498,75 @@
           </div>
         </div>
       </div>
-        <!-- Financial Chart -->
-        <div class="card full-width">
-          <div class="card-header">
-            <h2 class="card-title">Financial Overview</h2>
-          </div>
-          <div class="card-body">
-            <div class="chart-container">
-              <canvas id="financial-chart"></canvas>
-            </div>
-          </div>
         </div>
+     <style>
+.bills-list {
+  margin-bottom: 1rem;
+}
 
-        <!-- Tax Saving Investments -->
-        <div class="card full-width">
-          <div class="card-header">
-            <h2 class="card-title">Tax Saving Investments</h2>
-            <i class="fas fa-piggy-bank text-muted"></i>
+.bill-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.bill-item:last-child {
+  border-bottom: none;
+}
+
+.bill-title {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.bill-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.bill-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bill-amount {
+  font-weight: 500;
+}
+
+
+
+     </style>        
+     <div class="section-header">
+      <h2 style="margin-right: 10px">Expense Control</h2>
+    </div>
+    <div class="metrics-grid">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Monthly Expenditure</h3>
+          <i class="fas fa-chart-line text-muted"></i>
+        </div>
+        <div class="card-body">
+          <p class="text-muted">Monthly Expense Target</p>
+          <div class="metric-status">
+            <span class="status-badge on-track">On Track</span>
+            <span class="text-muted">Rs.75,000 / Rs.100,000</span>
           </div>
-          <div class="card-body">
-            <div class="tax-saving-summary">
-              <div class="tax-saving-total">
-                <span class="label">Total Invested (Section 80C)</span>
-                <span class="amount">₹1,20,000 / ₹1,50,000</span>
-              </div>
-              <div class="tax-saving-progress">
-                <div class="progress-bar">
-                  <div class="progress" style="width: 80%"></div>
-                </div>
-                <span class="progress-text">80% of limit utilized</span>
-              </div>
-            </div>
-            <div class="tax-saving-list">
-              <div class="tax-saving-item">
-                <div class="tax-saving-info">
-                  <p class="tax-saving-title">ELSS Mutual Funds</p>
-                  <p class="tax-saving-description">Tax-saving equity mutual funds</p>
-                </div>
-                <div class="tax-saving-amount">
-                  <span>₹50,000</span>
-                </div>
-              </div>
-              <div class="tax-saving-item">
-                <div class="tax-saving-info">
-                  <p class="tax-saving-title">PPF</p>
-                  <p class="tax-saving-description">Public Provident Fund</p>
-                </div>
-                <div class="tax-saving-amount">
-                  <span>₹70,000</span>
-                </div>
-              </div>
-            </div>
-            <button class="btn btn-outline full-width">Explore Tax Saving Options</button>
+          <div class="progress-bar">
+            <div class="progress" style="width: 75%"></div>
+          </div>
+          <div class="metric-footer">
+            <span class="metric-target">Rs. 100,000</span>
+            <span class="text-muted">75% complete</span>
           </div>
         </div>
       </div>
-    </main>
-  </div>
+      
+      </div>
+    </div>
+
+
 
   <!-- Modals -->
   <!-- Add Money Modal -->
