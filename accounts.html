@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Management - FinTrack</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Sidebar Styles */
+        .sidebar {
+            width: 60px;
+            background: #2c3e50;
+            color: white;
+            height: 100vh;
+            transition: all 0.3s ease-in-out;
+            overflow: hidden;
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar:hover {
+            width: 230px;
+        }
+
+        .sidebar-header {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #1a252f;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            overflow: hidden;
+        }
+
+        .sidebar-logo {
+            margin-left: 0;  
+            width: 50px;
+            height: 50px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .sidebar:hover .sidebar-logo {
+            width: 40px;
+            height: 40px;
+        }
+
+        .sidebar-nav ul li a span,
+        .sidebar-footer ul li a span {
+            opacity: 0;
+            transition: opacity 0.2s;
+            white-space: nowrap;
+        }
+
+        .sidebar:hover .sidebar-nav ul li a span,
+        .sidebar:hover .sidebar-footer ul li a span {
+            opacity: 1;
+        }
+
+        /* Main Content Styles */
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+        }
+
+        .account-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .account-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #3B82F6;
+        }
+
+        .account-card.credit::before { background: #EF4444; }
+        .account-card.savings::before { background: #10B981; }
+        .account-card.investment::before { background: #8B5CF6; }
+
+        .form-input {
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: #3B82F6;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .btn-primary {
+            background: #3B82F6;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .grid-cards {
+            display: grid;
+            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+              <img src="logo.png" alt="Taka Nei Logo" class="sidebar-logo">
+            </div>
+            <nav class="sidebar-nav">
+              <ul>
+                <li class="active"><a href="index.html"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+                <li><a href="accounts.html"><i class="fas fa-wallet"></i> <span>Accounts</span></a></li>
+                <li><a href="#"><i class="fas fa-exchange-alt"></i> <span>Transactions</span></a></li>
+                <li><a href="#"><i class="fas fa-calendar-alt"></i> <span>EMIs</span></a></li>
+                <li><a href="#"><i class="fas fa-receipt"></i> <span>Subscriptions</span></a></li>
+                <li><a href="#"><i class="fas fa-money-bill-wave"></i> <span>Payments</span></a></li>
+                <li><a href="#"><i class="fas fa-chart-line"></i> <span>Investments</span></a></li>
+                <li><a href="#"><i class="fas fa-chart-bar"></i> <span>Stocks</span></a></li>
+                <li><a href="#"><i class="fas fa-piggy-bank"></i> <span>Tax Saving</span></a></li>
+                <li><a href="#"><i class="fas fa-chart-pie"></i> <span>Analytics</span></a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+              </ul>
+            </nav>
+            <div class="sidebar-footer">
+              <ul>
+                <li><a href="#"><i class="fas fa-question-circle"></i> <span>Help</span></a></li>
+                <li><a href="landing.html"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+              </ul>
+            </div>
+          </aside>
+          
+          <!-- CSS -->
+          
+          <style>
+            /* Sidebar styles */
+            .sidebar {
+              width: 60px;
+              background: #2c3e50;
+              color: white;
+              height: 100vh;
+              transition: all 0.3s ease-in-out;
+              overflow: hidden;
+              position: fixed;
+              display: flex;
+              flex-direction: column;
+            }
+        
+            .sidebar:hover {
+              width: 180px;
+            }
+        
+            /* Sidebar Header */
+            .sidebar-header {
+              height: 70px;
+              display: flex;
+              align-items: center;
+              padding: 15px;
+              background: #1a252f;
+              position: sticky;
+              top: 0;
+              z-index: 10;
+              overflow: hidden;
+            }
+        
+            /* Logo */
+            .sidebar-logo {
+            margin-left: 0;  
+            width: 50px;
+              height: 50px;
+              transition: all 0.3s ease-in-out;
+            }
+        
+            .sidebar:hover .sidebar-logo {
+              width: 40px;
+              height: 40px;
+            }
+        
+            .logo-text {
+              font-size: 18px;
+              margin-left: 10px;
+              opacity: 0;
+              transition: opacity 0.3s;
+              white-space: nowrap;
+            }
+        
+            .sidebar:hover .logo-text {
+              opacity: 1;
+            }
+        
+            /* Navigation Items */
+            .sidebar-nav ul li a span,
+            .sidebar-footer ul li a span {
+              opacity: 0;
+              transition: opacity 0.2s;
+              white-space: nowrap;
+            }
+        
+            .sidebar:hover .sidebar-nav ul li a span,
+            .sidebar:hover .sidebar-footer ul li a span {
+              opacity: 1;
+            }
+        
+            .sidebar-nav ul li a,
+            .sidebar-footer ul li a {
+              color: white;
+              text-decoration: none;
+              display: flex;
+              align-items: center;
+              font-size: 14px;
+              padding: 10px 15px;
+            }
+        
+            .sidebar-nav ul li a i,
+            .sidebar-footer ul li a i {
+              font-size: 16px;
+              width: 25px;
+              text-align: center;
+            }
+         /* Footer Styling */
+            .sidebar-footer {
+              margin-top: auto;
+              background: #1a252f;
+              position: sticky;
+              bottom: 0;
+              padding: 10px 0;
+            }
+        
+            .sidebar-footer ul {
+              list-style: none;
+              padding: 0;
+              margin: 0;
+            }
+        
+            .sidebar-footer ul li {
+              padding: 10px 15px;
+            }
+        
+            .sidebar-footer ul li a {
+              color: white;
+              text-decoration: none;
+              display: flex;
+              align-items: center;
+              font-size: 14px;
+            }
+        
+            .sidebar-footer ul li a i {
+              font-size: 16px;
+              width: 25px;
+              text-align: center;
+            }
+            /* Hover Effects */
+            .sidebar-nav ul li:hover,
+            .sidebar-footer ul li:hover {
+              background: #34495e;
+            }
+        
+            /* Scrollbar */
+            .sidebar-nav::-webkit-scrollbar {
+              width: 5px;
+            }
+        
+            .sidebar-nav::-webkit-scrollbar-thumb {
+              background: #95a5a6;
+            }
+            
+          </style>
+          
+          <!-- JavaScript -->
+          <script>
+            document.getElementById("collapse-sidebar").addEventListener("click", function() {
+              document.querySelector(".sidebar").classList.toggle("collapsed");
+            });
+          </script>
+
+        <!-- Main Content -->
+        <main class="ml-16 p-8">
+            <div class="max-w-7xl mx-auto">
+                <!-- Header -->
+                <div class="flex justify-between items-center mb-8">
+                    <h1 class="text-3xl font-bold text-gray-800">Account Management</h1>
+                    <div class="flex items-center space-x-4">
+                        <button class="btn-primary flex items-center">
+                            <i class="fas fa-plus mr-2"></i>
+                            New Transaction
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="card p-6 bg-gradient-to-br from-blue-50 to-blue-100">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-blue-600 mb-1">Total Balance</p>
+                                <p class="text-2xl font-bold text-blue-700">$18,340.15</p>
+                            </div>
+                            <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+                                <i class="fas fa-coins text-blue-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card p-6 bg-gradient-to-br from-green-50 to-green-100">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-green-600 mb-1">Monthly Income</p>
+                                <p class="text-2xl font-bold text-green-700">$4,500.00</p>
+                            </div>
+                            <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+                                <i class="fas fa-arrow-down text-green-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card p-6 bg-gradient-to-br from-purple-50 to-purple-100">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-purple-600 mb-1">Monthly Expenses</p>
+                                <p class="text-2xl font-bold text-purple-700">$2,340.15</p>
+                            </div>
+                            <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
+                                <i class="fas fa-arrow-up text-purple-600 text-xl"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Account Cards Grid -->
+                <div class="card p-6 mb-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-semibold text-gray-800">Linked Accounts</h3>
+                        <button class="btn-primary flex items-center">
+                            <i class="fas fa-plus mr-2"></i>
+                            Add Account
+                        </button>
+                    </div>
+
+                    <div class="grid-cards">
+                        <!-- Checking Account Card -->
+                        <div class="account-card checking">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">Primary Checking</h4>
+                                    <p class="text-sm text-gray-600">**** 4582</p>
+                                </div>
+                                <div class="flex gap-2">
+                                    <button class="text-blue-600 hover:text-blue-700">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="text-red-600 hover:text-red-700">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="text-2xl font-bold text-gray-800 mt-4">$5,230.45</p>
+                            <div class="flex items-center mt-3 text-sm text-gray-500">
+                                <i class="fas fa-exchange-alt mr-2"></i>
+                                Last transaction: 2h ago
+                            </div>
+                        </div>
+
+                        <!-- Savings Account Card -->
+                        <div class="account-card savings">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">High-Yield Savings</h4>
+                                    <p class="text-sm text-gray-600">**** 6721</p>
+                                </div>
+                                <div class="flex gap-2">
+                                    <button class="text-blue-600 hover:text-blue-700">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="text-red-600 hover:text-red-700">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="text-2xl font-bold text-gray-800 mt-4">$12,450.00</p>
+                            <div class="flex items-center mt-3 text-sm text-gray-500">
+                                <i class="fas fa-percent mr-2"></i>
+                                2.15% APY
+                            </div>
+                        </div>
+
+                        <!-- Credit Card -->
+                        <div class="account-card credit">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h4 class="font-semibold text-gray-800 mb-1">Platinum Credit Card</h4>
+                                    <p class="text-sm text-gray-600">**** 9824</p>
+                                </div>
+                                <div class="flex gap-2">
+                                    <button class="text-blue-600 hover:text-blue-700">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="text-red-600 hover:text-red-700">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="text-2xl font-bold text-gray-800 mt-4">-$1,540.30</p>
+                            <div class="flex items-center mt-3 text-sm text-red-500">
+                                <i class="fas fa-clock mr-2"></i>
+                                Due in 14 days
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Account Form -->
+                <div class="card p-6 bg-white">
+                    <h3 class="text-xl font-semibold mb-6 text-gray-800">Link New Account</h3>
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Account Name</label>
+                                <input type="text" class="form-input w-full" placeholder="e.g. Business Checking">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Account Type</label>
+                                <select class="form-input w-full">
+                                    <option>Checking</option>
+                                    <option>Savings</option>
+                                    <option>Credit Card</option>
+                                    <option>Investment</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Initial Balance</label>
+                                <div class="relative">
+                                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500">$</span>
+                                    <input type="number" class="form-input w-full pl-8" placeholder="0.00">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Currency</label>
+                                <select class="form-input w-full">
+                                    <option>USD ($)</option>
+                                    <option>EUR (€)</option>
+                                    <option>GBP (£)</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="flex justify-end gap-4">
+                            <button type="reset" class="px-6 py-2 border rounded-lg text-gray-600 hover:bg-gray-50">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn-primary flex items-center">
+                                <i class="fas fa-link mr-2"></i>
+                                Link Account
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Interactive Elements
+        document.querySelectorAll('.account-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-5px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Form Validation
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add form validation logic here
+        });
+    </script>
+</body>
+</html>

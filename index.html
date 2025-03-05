@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinPro - Your Financial Companion</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="light-mode">
+  <div class="dashboard-container">Sattwik
+<aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="logo2.png" alt="Taka Nei Logo" class="sidebar-logo">
+    </div>
+    <nav class="sidebar-nav">
+      <ul>
+        <li class="active"><a href="#"><i class="fas fa-home"></i> <span>Dashboard</span></a></li>
+        <li><a href="accounts.html"><i class="fas fa-wallet"></i> <span>Accounts</span></a></li>
+        <li><a href="transactions.html"><i class="fas fa-exchange-alt"></i> <span>Transactions</span></a></li>
+        <li><a href="#"><i class="fas fa-calendar-alt"></i> <span>EMIs</span></a></li>
+        <li><a href="#"><i class="fas fa-receipt"></i> <span>Subscriptions</span></a></li>
+        <li><a href="#"><i class="fas fa-money-bill-wave"></i> <span>Payments</span></a></li>
+        <li><a href="#"><i class="fas fa-chart-line"></i> <span>Investments</span></a></li>
+        <li><a href="#"><i class="fas fa-chart-bar"></i> <span>Stocks</span></a></li>
+        <li><a href="#"><i class="fas fa-piggy-bank"></i> <span>Tax Saving</span></a></li>
+        <li><a href="#"><i class="fas fa-chart-pie"></i> <span>Analytics</span></a></li>
+        <li><a href="#"><i class="fas fa-cog"></i> <span>Settings</span></a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-footer">
+      <ul>
+        <li><a href="#"><i class="fas fa-question-circle"></i> <span>Help</span></a></li>
+        <li><a href="landing.html"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a></li>
+      </ul>
+    </div>
+  </aside>
+  
+  <!-- CSS -->
+  
+  <style>
+    /* Sidebar styles */
+    .sidebar {
+      width: 60px;
+      background: #2c3e50;
+      color: white;
+      height: 100vh;
+      transition: all 0.3s ease-in-out;
+      overflow: hidden;
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar:hover {
+      width: 230px;
+    }
+
+    /* Sidebar Header */
+    .sidebar-header {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      background: #1a252f;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      overflow: hidden;
+    }
+
+    /* Logo */
+    .sidebar-logo {
+    margin-left: 0;  
+    width: 50px;
+      height: 50px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .sidebar:hover .sidebar-logo {
+      width: 40px;
+      height: 40px;
+    }
+
+    .logo-text {
+      font-size: 18px;
+      margin-left: 10px;
+      opacity: 0;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+    }
+
+    .sidebar:hover .logo-text {
+      opacity: 1;
+    }
+
+    /* Navigation Items */
+    .sidebar-nav ul li a span,
+    .sidebar-footer ul li a span {
+      opacity: 0;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .sidebar:hover .sidebar-nav ul li a span,
+    .sidebar:hover .sidebar-footer ul li a span {
+      opacity: 1;
+    }
+
+    .sidebar-nav ul li a,
+    .sidebar-footer ul li a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      padding: 10px 15px;
+    }
+
+    .sidebar-nav ul li a i,
+    .sidebar-footer ul li a i {
+      font-size: 16px;
+      width: 25px;
+      text-align: center;
+    }
+ /* Footer Styling */
+    .sidebar-footer {
+      margin-top: auto;
+      background: #1a252f;
+      position: sticky;
+      bottom: 0;
+      padding: 10px 0;
+    }
+
+    .sidebar-footer ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar-footer ul li {
+      padding: 10px 15px;
+    }
+
+    .sidebar-footer ul li a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .sidebar-footer ul li a i {
+      font-size: 16px;
+      width: 25px;
+      text-align: center;
+    }
+    /* Hover Effects */
+    .sidebar-nav ul li:hover,
+    .sidebar-footer ul li:hover {
+      background: #34495e;
+    }
+
+    /* Scrollbar */
+    .sidebar-nav::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .sidebar-nav::-webkit-scrollbar-thumb {
+      background: #95a5a6;
+    }
+    
+  </style>
+  
+  <!-- JavaScript -->
+  <script>
+    document.getElementById("collapse-sidebar").addEventListener("click", function() {
+      document.querySelector(".sidebar").classList.toggle("collapsed");
+    });
+  </script>
+  
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Top Navigation -->
+      <header class="top-nav">
+        <nav class="breadcrumb">
+          <a href="#">Home</a>
+          <span>/</span>
+          <a href="#">Dashboard</a>
+        </nav>
+        <div class="top-nav-actions">
+          <button id="notifications-btn" class="icon-btn">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge"></span>
+          </button>
+          <button id="theme-toggle" class="icon-btn">
+            <i class="fas fa-moon"></i>
+          </button>
+          <div class="profile-dropdown">
+            <button class="profile-btn">
+              <img src="https://github.com/shadcn.png" alt="Profile" class="avatar">
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="dropdown-menu" id="profile-menu">
+              <div class="dropdown-header">
+                <p class="dropdown-title">My Account</p>
+              </div>
+              <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">Profile</a>
+              <a href="#" class="dropdown-item">Settings</a>
+              <a href="#" class="dropdown-item">Logout</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Content -->
+      <div class="dashboard-content">
+        <h1 class="page-title">Welcome back, Anisha!</h1>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+          <button class="btn btn-primary" id="add-money-btn">
+            <i class="fas fa-plus"></i> Add Money
+          </button>
+          <button class="btn btn-primary" id="send-money-btn">
+            <i class="fas fa-paper-plane"></i> Send Money
+          </button>
+          <button class="btn btn-primary" id="pay-bill-btn">
+            <i class="fas fa-file-invoice"></i> Pay Bill
+          </button>
+          <button class="btn btn-primary" id="invest-btn">
+            <i class="fas fa-chart-line"></i> Invest
+          </button>
+          <button class="btn btn-primary" id="upi-btn">
+            <i class="fas fa-qrcode"></i> UPI Pay
+          </button>
+        </div>
+
+        <!-- Cards Grid -->
+        <div class="cards-grid">
+          <!-- Account Overview -->
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Account Overview</h2>
+              <i class="fas fa-wallet text-muted"></i>
+            </div>
+            <div class="card-body">
+              <div class="total-balance">₹25,88,157</div>
+              <p class="text-muted">Total balance across all accounts</p>
+              <div class="accounts-list">
+                <div class="account-item">
+                  <span class="text-muted">Savings Account</span>
+                  <span class="account-balance">₹5,24,023</span>
+                </div>
+                <div class="account-item">
+                  <span class="text-muted">Current Account</span>
+                  <span class="account-balance">₹12,75,089</span>
+                </div>
+                <div class="account-item">
+                  <span class="text-muted">Fixed Deposit</span>
+                  <span class="account-balance">₹7,89,045</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Transactions -->
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Recent Transactions</h2>
+              <i class="fas fa-exchange-alt text-muted"></i>
+            </div>
+            <div class="card-body">
+              <div class="transactions-list">
+                <div class="transaction-item">
+                  <div class="transaction-info">
+                    <p class="transaction-title">Swiggy Order</p>
+                    <p class="transaction-date">2023-07-15</p>
+                  </div>
+                  <div class="transaction-amount expense">
+                    <span>-₹450</span>
+                    <i class="fas fa-arrow-down"></i>
+                  </div>
+                </div>
+                <div class="transaction-item">
+                  <div class="transaction-info">
+                    <p class="transaction-title">Salary Credit</p>
+                    <p class="transaction-date">2023-07-01</p>
+                  </div>
+                  <div class="transaction-amount income">
+                    <span>+₹75,000</span>
+                    <i class="fas fa-arrow-up"></i>
+                  </div>
+                </div>
+                <div class="transaction-item">
+                  <div class="transaction-info">
+                    <p class="transaction-title">Amazon.in</p>
+                    <p class="transaction-date">2023-06-28</p>
+                  </div>
+                  <div class="transaction-amount expense">
+                    <span>-₹2,499</span>
+                    <i class="fas fa-arrow-down"></i>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-outline full-width">View All Transactions</button>
+            </div>
+          </div>
+
+          <!-- EMIs -->
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">EMIs</h2>
+              <i class="fas fa-calendar-alt text-muted"></i>
+            </div>
+            <div class="card-body">
+              <div class="emi-list">
+                <div class="emi-item">
+                  <div class="emi-info">
+                    <p class="emi-title">Home Loan</p>
+                    <p class="emi-date">Due: 5th of every month</p>
+                  </div>
+                  <div class="emi-amount">
+                    <span>₹25,000</span>
+                  </div>
+                </div>
+                <div class="emi-item">
+                  <div class="emi-info">
+                    <p class="emi-title">Car Loan</p>
+                    <p class="emi-date">Due: 15th of every month</p>
+                  </div>
+                  <div class="emi-amount">
+                    <span>₹12,000</span>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-outline full-width">Manage EMIs</button>
+            </div>
+          </div>
+
+          <!-- Subscriptions -->
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Subscriptions</h2>
+              <i class="fas fa-receipt text-muted"></i>
+            </div>
+            <div class="card-body">
+              <div class="subscription-list">
+                <div class="subscription-item">
+                  <div class="subscription-info">
+                    <p class="subscription-title">Netflix</p>
+                    <p class="subscription-date">Renews: 20th Jul 2023</p>
+                  </div>
+                  <div class="subscription-amount">
+                    <span>₹649/month</span>
+                  </div>
+                </div>
+                <div class="subscription-item">
+                  <div class="subscription-info">
+                    <p class="subscription-title">Amazon Prime</p>
+                    <p class="subscription-date">Renews: 5th Aug 2023</p>
+                  </div>
+                  <div class="subscription-amount">
+                    <span>₹1,499/year</span>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-outline full-width">Manage Subscriptions</button>
+            </div>
+          </div>
+
+          <!-- Investments -->
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Investments</h2>
+              <i class="fas fa-chart-line text-muted"></i>
+            </div>
+            <div class="card-body">
+              <div class="investment-summary">
+                <div class="investment-total">
+                  <span class="label">Total Invested</span>
+                  <span class="amount">₹5,00,000</span>
+                </div>
+                <div class="investment-returns">
+                  <span class="label">Total Returns</span>
+                  <span class="amount positive">+₹75,000 (15%)</span>
+                </div>
+              </div>
+              <div class="investment-list">
+                <div class="investment-item">
+                  <div class="investment-info">
+                    <p class="investment-title">HDFC Mid-Cap Opportunities Fund</p>
+                    <p class="investment-type">Mutual Fund</p>
+                  </div>
+                  <div class="investment-performance positive">
+                    <span>+18.5%</span>
+                  </div>
+                </div>
+                <div class="investment-item">
+                  <div class="investment-info">
+                    <p class="investment-title">Axis Long Term Equity Fund</p>
+                    <p class="investment-type">ELSS</p>
+                  </div>
+                  <div class="investment-performance positive">
+                    <span>+12.3%</span>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-outline full-width">View All Investments</button>
+            </div>
+          </div>
+
+          <!-- Stocks -->
+          <div class="card">
+            <div class="card-header">
+              <h2 class="card-title">Stocks</h2>
+              <i class="fas fa-chart-bar text-muted"></i>
+            </div>
+            <div class="card-body">
+              <div class="stock-list">
+                <div class="stock-item">
+                  <div class="stock-info">
+                    <p class="stock-name">Reliance Industries</p>
+                    <p class="stock-ticker">RELIANCE</p>
+                  </div>
+                  <div class="stock-performance positive">
+                    <span class="stock-price">₹2,500.00</span>
+                    <span class="stock-change">+1.5%</span>
+                  </div>
+                </div>
+                <div class="stock-item">
+                  <div class="stock-info">
+                    <p class="stock-name">Tata Consultancy Services</p>
+                    <p class="stock-ticker">TCS</p>
+                  </div>
+                  <div class="stock-performance negative">
+                    <span class="stock-price">₹3,200.00</span>
+                    <span class="stock-change">-0.8%</span>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-outline full-width">View Portfolio</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Financial Chart -->
+        <div class="card full-width">
+          <div class="card-header">
+            <h2 class="card-title">Financial Overview</h2>
+          </div>
+          <div class="card-body">
+            <div class="chart-container">
+              <canvas id="financial-chart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tax Saving Investments -->
+        <div class="card full-width">
+          <div class="card-header">
+            <h2 class="card-title">Tax Saving Investments</h2>
+            <i class="fas fa-piggy-bank text-muted"></i>
+          </div>
+          <div class="card-body">
+            <div class="tax-saving-summary">
+              <div class="tax-saving-total">
+                <span class="label">Total Invested (Section 80C)</span>
+                <span class="amount">₹1,20,000 / ₹1,50,000</span>
+              </div>
+              <div class="tax-saving-progress">
+                <div class="progress-bar">
+                  <div class="progress" style="width: 80%"></div>
+                </div>
+                <span class="progress-text">80% of limit utilized</span>
+              </div>
+            </div>
+            <div class="tax-saving-list">
+              <div class="tax-saving-item">
+                <div class="tax-saving-info">
+                  <p class="tax-saving-title">ELSS Mutual Funds</p>
+                  <p class="tax-saving-description">Tax-saving equity mutual funds</p>
+                </div>
+                <div class="tax-saving-amount">
+                  <span>₹50,000</span>
+                </div>
+              </div>
+              <div class="tax-saving-item">
+                <div class="tax-saving-info">
+                  <p class="tax-saving-title">PPF</p>
+                  <p class="tax-saving-description">Public Provident Fund</p>
+                </div>
+                <div class="tax-saving-amount">
+                  <span>₹70,000</span>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-outline full-width">Explore Tax Saving Options</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modals -->
+  <!-- Add Money Modal -->
+  <div class="modal" id="add-money-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Add Money</h2>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="amount">Amount to Add</label>
+          <input type="number" id="amount" class="form-control" placeholder="Enter amount">
+        </div>
+        <div class="form-group">
+          <label for="add-money-method">Payment Method</label>
+          <select id="add-money-method" class="form-control">
+            <option value="upi">UPI</option>
+            <option value="netbanking">Net Banking</option>
+            <option value="debit-card">Debit Card</option>
+            <option value="credit-card">Credit Card</option>
+          </select>
+        </div>
+        <div id="upi-details" class="payment-details">
+          <div class="form-group">
+            <label for="upi-id">UPI ID</label>
+            <input type="text" id="upi-id" class="form-control" placeholder="Enter UPI ID">
+          </div>
+        </div>
+        <div id="card-details" class="payment-details" style="display: none;">
+          <div class="form-group">
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456">
+          </div>
+          <div class="form-row">
+            <div class="form-group half">
+              <label for="expiry">Expiry Date</label>
+              <input type="text" id="expiry" class="form-control" placeholder="MM/YY">
+            </div>
+            <div class="form-group half">
+              <label for="cvv">CVV</label>
+              <input type="text" id="cvv" class="form-control" placeholder="123">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="cancel-add-money">Cancel</button>
+        <button class="btn btn-primary" id="confirm-add-money">Add Money</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Send Money Modal -->
+  <div class="modal" id="send-money-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Send Money</h2>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="send-amount">Amount to Send</label>
+          <input type="number" id="send-amount" class="form-control" placeholder="Enter amount">
+        </div>
+        <div class="form-group">
+          <label for="from-account">From Account</label>
+          <select id="from-account" class="form-control">
+            <option value="savings">Savings Account (₹5,24,023)</option>
+            <option value="current">Current Account (₹12,75,089)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="send-method">Send Method</label>
+          <select id="send-method" class="form-control">
+            <option value="upi">UPI</option>
+            <option value="bank-transfer">Bank Transfer</option>
+          </select>
+        </div>
+        <div id="upi-recipient" class="recipient-details">
+          <div class="form-group">
+            <label for="recipient-upi">Recipient UPI ID</label>
+            <input type="text" id="recipient-upi" class="form-control" placeholder="Enter UPI ID">
+          </div>
+        </div>
+        <div id="bank-recipient" class="recipient-details" style="display: none;">
+          <div class="form-group">
+            <label for="recipient-name">Recipient Name</label>
+            <input type="text" id="recipient-name" class="form-control" placeholder="Enter recipient name">
+          </div>
+          <div class="form-group">
+            <label for="recipient-account">Recipient Account Number</label>
+            <input type="text" id="recipient-account" class="form-control" placeholder="Enter account number">
+          </div>
+          <div class="form-group">
+            <label for="recipient-ifsc">IFSC Code</label>
+            <input type="text" id="recipient-ifsc" class="form-control" placeholder="Enter IFSC code">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="cancel-send-money">Cancel</button>
+        <button class="btn btn-primary" id="confirm-send-money">Send Money</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pay Bill Modal -->
+  <div class="modal" id="pay-bill-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Pay Bill</h2>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="bill-type">Bill Type</label>
+          <select id="bill-type" class="form-control">
+            <option value="electricity">Electricity</option>
+            <option value="water">Water</option>
+            <option value="gas">Gas</option>
+            <option value="mobile">Mobile Recharge</option>
+            <option value="dth">DTH Recharge</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="biller">Select Biller</label>
+          <select id="biller" class="form-control">
+            <option value="">Select a biller</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="consumer-number">Consumer Number / Mobile Number</label>
+          <input type="text" id="consumer-number" class="form-control" placeholder="Enter consumer number">
+        </div>
+        <div class="form-group">
+          <label for="bill-amount">Bill Amount</label>
+          <input type="number" id="bill-amount" class="form-control" placeholder="Enter bill amount">
+        </div>
+        <div class="form-group">
+          <label for="payment-method">Payment Method</label>
+          <select id="payment-method" class="form-control">
+            <option value="savings">Savings Account (₹5,24,023)</option>
+            <option value="current">Current Account (₹12,75,089)</option>
+            <option value="upi">UPI</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="cancel-pay-bill">Cancel</button>
+        <button class="btn btn-primary" id="confirm-pay-bill">Pay Bill</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Invest Modal -->
+  <div class="modal" id="invest-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Invest</h2>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="investment-type">Investment Type</label>
+          <select id="investment-type" class="form-control">
+            <option value="mutual-fund">Mutual Fund</option>
+            <option value="stocks">Stocks</option>
+            <option value="fd">Fixed Deposit</option>
+            <option value="gold">Digital Gold</option>
+          </select>
+        </div>
+        <div id="mutual-fund-options" class="investment-options">
+          <div class="form-group">
+            <label for="mutual-fund">Select Mutual Fund</label>
+            <select id="mutual-fund" class="form-control">
+              <option value="">Select a mutual fund</option>
+              <option value="hdfc-mid-cap">HDFC Mid-Cap Opportunities Fund</option>
+              <option value="axis-bluechip">Axis Bluechip Fund</option>
+              <option value="sbi-small-cap">SBI Small Cap Fund</option>
+            </select>
+          </div>
+        </div>
+        <div id="stock-options" class="investment-options" style="display: none;">
+          <div class="form-group">
+            <label for="stock">Select Stock</label>
+            <select id="stock" class="form-control">
+              <option value="">Select a stock</option>
+              <option value="reliance">Reliance Industries</option>
+              <option value="tcs">Tata Consultancy Services</option>
+              <option value="hdfc-bank">HDFC Bank</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="investment-amount">Investment Amount</label>
+          <input type="number" id="investment-amount" class="form-control" placeholder="Enter amount">
+        </div>
+        <div class="form-group">
+          <label for="investment-frequency">Investment Frequency</label>
+          <select id="investment-frequency" class="form-control">
+            <option value="one-time">One-time</option>
+            <option value="monthly">Monthly (SIP)</option>
+            <option value="quarterly">Quarterly</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="cancel-invest">Cancel</button>
+        <button class="btn btn-primary" id="confirm-invest">Invest</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- UPI Modal -->
+  <div class="modal" id="upi-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">UPI Payment</h2>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="upi-amount">Amount</label>
+          <input type="number" id="upi-amount" class="form-control" placeholder="Enter amount">
+        </div>
+        <div class="form-group">
+          <label for="upi-id">UPI ID / Mobile Number</label>
+          <input type="text" id="upi-id" class="form-control" placeholder="Enter UPI ID or mobile number">
+        </div>
+        <div class="form-group">
+          <label for="upi-note">Note (Optional)</label>
+          <input type="text" id="upi-note" class="form-control" placeholder="Add a note">
+        </div>
+        <div class="upi-qr-section">
+          <p>Or scan QR code:</p>
+          <div class="upi-qr-code">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg" alt="UPI QR Code" width="200" height="200">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="cancel-upi">Cancel</button>
+        <button class="btn btn-primary" id="confirm-upi">Pay</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notifications Panel -->
+  <div class="notifications-panel" id="notifications-panel">
+    <div class="notifications-header">
+      <h3>Notifications</h3>
+      <button class="close-notifications">&times;</button>
+    </div>
+    <div class="notifications-body">
+      <div class="notification-item">
+        <div class="notification-icon info">
+          <i class="fas fa-info-circle"></i>
+        </div>
+        <div class="notification-content">
+          <p class="notification-title">New Feature</p>
+          <p class="notification-message">Now you can invest in US stocks directly from your account!</p>
+          <p class="notification-time">2 hours ago</p>
+        </div>
+      </div>
+      <div class="notification-item">
+        <div class="notification-icon warning">
+          <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <div class="notification-content">
+          <p class="notification-title">Account Alert</p>
+          <p class="notification-message">Your account balance is below ₹10,000. Consider adding funds.</p>
+          <p class="notification-time">1 day ago</p>
+        </div>
+      </div>
+      <div class="notification-item">
+        <div class="notification-icon danger">
+          <i class="fas fa-credit-card"></i>
+        </div>
+        <div class="notification-content">
+          <p class="notification-title">Bill Payment Due</p>
+          <p class="notification-message">Your electricity bill of ₹2,500 is due in 3 days.</p>
+          <p class="notification-time">2 days ago</p>
+        </div>
+      </div>
+      <div class="notification-item">
+        <div class="notification-icon success">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="notification-content">
+          <p class="notification-title">Investment Update</p>
+          <p class="notification-message">Your SIP in HDFC Mid-Cap Opportunities Fund was successful.</p>
+          <p class="notification-time">3 days ago</p>
+        </div>
+      </div>
+      <div class="notification-item">
+        <div class="notification-icon primary">
+          <i class="fas fa-gift"></i>
+        </div>
+        <div class="notification-content">
+          <p class="notification-title">Cashback Offer</p>
+          <p class="notification-message">You've earned ₹500 cashback on your recent transactions!</p>
+          <p class="notification-time">5 days ago</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

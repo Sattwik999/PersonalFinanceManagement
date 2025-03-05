@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinTrack - Your Financial Companion</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="landing.css">
+</head>
+<body class="font-sans antialiased text-gray-900 bg-black">
+    <!-- Animated Background -->
+    <div class="particles-container fixed inset-0 z-0"></div>
+
+    <!-- Navigation -->
+    <nav class="relative z-10 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div class="flex items-center">
+                    <img src="logo2.png" alt="FinTrack Logo" class="h-10 w-10 mr-2">
+                    <span class="text-2xl font-bold text-white">SUVRITT</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#features" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Features</a>
+                        <a href="#pricing" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
+                        <a href="#testimonials" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Testimonials</a>
+                        <a href="#contact" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="flex items-center">
+                    <a href="index.html" class="text-white bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 px-4 py-2 rounded-md text-sm font-medium">Login</a>
+                    <a href="login.html" class="ml-4 text-white bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 px-4 py-2 rounded-md text-sm font-medium">Sign Up</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-400 hover:text-white focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu, show/hide based on menu state -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#features" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Features</a>
+                <a href="#pricing" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Pricing</a>
+                <a href="#testimonials" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Testimonials</a>
+                <a href="#contact" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative z-10 pt-16 pb-32 flex items-center min-h-screen">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+                    <span class="block">Take Control of</span>
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">Your Financial Future</span>
+                </h1>
+                <p class="text-xl text-gray-300 mb-8">
+                    SUVRITT helps you track, manage, and optimize your finances with powerful tools and beautiful visualizations.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="signup.html" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 md:py-4 md:text-lg md:px-10 transform transition hover:scale-105">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 relative">
+                <div class="dashboard-preview rounded-xl shadow-2xl overflow-hidden transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                    <img src="dash.png" alt="FinTrack Dashboard" class="w-full">
+                </div>
+                <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-r from-pink-500 to-purple-500 rounded-full filter blur-xl opacity-70 animate-pulse"></div>
+                <div class="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-r from-yellow-500 to-green-500 rounded-full filter blur-xl opacity-70 animate-pulse delay-700"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="relative z-10 py-20 bg-gradient-to-b from-black to-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Powerful Financial Tools</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Everything you need to manage your money effectively in one place.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-gray-800 rounded-xl p-8 transform transition hover:scale-105 hover:bg-gray-700 border border-gray-700">
+                    <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-md flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Expense Tracking</h3>
+                    <p class="text-gray-300">Automatically categorize and track your expenses to understand where your money goes.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-gray-800 rounded-xl p-8 transform transition hover:scale-105 hover:bg-gray-700 border border-gray-700">
+                    <div class="w-12 h-12 bg-gradient-to-r from-green-500 to-blue-600 rounded-md flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-pie text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Budget Planning</h3>
+                    <p class="text-gray-300">Create custom budgets and get real-time updates on your spending habits.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-gray-800 rounded-xl p-8 transform transition hover:scale-105 hover:bg-gray-700 border border-gray-700">
+                    <div class="w-12 h-12 bg-gradient-to-r from-red-500 to-pink-600 rounded-md flex items-center justify-center mb-6">
+                        <i class="fas fa-wallet text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Account Management</h3>
+                    <p class="text-gray-300">Connect all your accounts in one place for a complete financial overview.</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="bg-gray-800 rounded-xl p-8 transform transition hover:scale-105 hover:bg-gray-700 border border-gray-700">
+                    <div class="w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-md flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-bar text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Investment Tracking</h3>
+                    <p class="text-gray-300">Monitor your investments and analyze performance with detailed reports.</p>
+                </div>
+                <!-- Feature 5 -->
+                <div class="bg-gray-800 rounded-xl p-8 transform transition hover:scale-105 hover:bg-gray-700 border border-gray-700">
+                    <div class="w-12 h-12 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-md flex items-center justify-center mb-6">
+                        <i class="fas fa-hand-holding-usd text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Loan Management</h3>
+                    <p class="text-gray-300">Track your loans and see detailed payment schedules and interest breakdowns.</p>
+                </div>
+                <!-- Feature 6 -->
+                <div class="bg-gray-800 rounded-xl p-8 transform transition hover:scale-105 hover:bg-gray-700 border border-gray-700">
+                    <div class="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-600 rounded-md flex items-center justify-center mb-6">
+                        <i class="fas fa-file-invoice-dollar text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-4">Tax Planning</h3>
+                    <p class="text-gray-300">Prepare for tax season with deduction tracking and tax optimization tools.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="relative z-10 py-20 bg-gradient-to-b from-gray-900 to-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Choose the plan that works best for your financial needs.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Basic Plan -->
+                <div class="bg-gray-800 rounded-xl p-8 border border-gray-700 transform transition hover:scale-105">
+                    <h3 class="text-xl font-bold text-white mb-4">Basic</h3>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold text-white">0</span>
+                        <span class="text-gray-400">/month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Expense tracking
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Basic budgeting
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Connect up to 2 accounts
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Monthly reports
+                        </li>
+                    </ul>
+                    <a href="signup.html" class="block w-full bg-white hover:bg-gray-100 text-indigo-600 font-bold py-3 px-4 rounded-md text-center">Get Started</a>
+                </div>
+                <!-- Premium Plan -->
+                <div class="bg-gradient-to-br from-indigo-900 to-purple-900 rounded-xl p-8 border border-indigo-700 transform transition hover:scale-105 shadow-xl relative">
+                    <div class="absolute top-0 right-0 bg-gradient-to-r from-pink-500 to-purple-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">POPULAR</div>
+                    <h3 class="text-xl font-bold text-white mb-4">Premium</h3>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold text-white">99</span>
+                        <span class="text-gray-300">/month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-200">
+                            <i class="fas fa-check text-green-400 mr-2"></i>
+                            Everything in Basic
+                        </li>
+                        <li class="flex items-center text-gray-200">
+                            <i class="fas fa-check text-green-400 mr-2"></i>
+                            Advanced budgeting
+                        </li>
+                        <li class="flex items-center text-gray-200">
+                            <i class="fas fa-check text-green-400 mr-2"></i>
+                            Connect up to 10 accounts
+                        </li>
+                        <li class="flex items-center text-gray-200">
+                            <i class="fas fa-check text-green-400 mr-2"></i>
+                            Investment tracking
+                        </li>
+                        <li class="flex items-center text-gray-200">
+                            <i class="fas fa-check text-green-400 mr-2"></i>
+                            Weekly reports
+                        </li>
+                    </ul>
+                    <a href="signup.html" class="block w-full bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-bold py-3 px-4 rounded-md text-center">Get Started</a>
+                </div>
+                <!-- Business Plan -->
+                <div class="bg-gray-800 rounded-xl p-8 border border-gray-700 transform transition hover:scale-105">
+                    <h3 class="text-xl font-bold text-white mb-4">Business</h3>
+                    <div class="mb-6">
+                        <span class="text-4xl font-bold text-white">299</span>
+                        <span class="text-gray-400">/month</span>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Everything in Premium
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Unlimited accounts
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Tax planning tools
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Business expense categories
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Priority support
+                        </li>
+                    </ul>
+                    <a href="signup.html" class="block w-full bg-white hover:bg-gray-100 text-indigo-600 font-bold py-3 px-4 rounded-md text-center">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="relative z-10 py-20 bg-gradient-to-b from-black to-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">What Our Users Say</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Join thousands of satisfied users who have transformed their financial lives.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-800 rounded-xl p-8 border border-gray-700 transform transition hover:scale-105">
+                    <div class="flex items-center mb-6">
+                        <div class="flex">
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6">"FinTrack has completely changed how I manage my money. I've saved over $3,000 in the past year just by being more aware of my spending habits."</p>
+                    <div class="flex items-center">
+                        <img class="h-10 w-10 rounded-full mr-4" src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson">
+                        <div>
+                            <h4 class="text-white font-medium">Sarah Johnson</h4>
+                            <p class="text-gray-400 text-sm">Marketing Manager</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-800 rounded-xl p-8 border border-gray-700 transform transition hover:scale-105">
+                    <div class="flex items-center mb-6">
+                        <div class="flex">
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6">"As a small business owner, keeping track of expenses was always a challenge. FinTrack's business plan has streamlined our financial management and saved us countless hours."</p>
+                    <div class="flex items-center">
+                        <img class="h-10 w-10 rounded-full mr-4" src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael Chen">
+                        <div>
+                            <h4 class="text-white font-medium">Michael Chen</h4>
+                            <p class="text-gray-400 text-sm">Small Business Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-800 rounded-xl p-8 border border-gray-700 transform transition hover:scale-105">
+                    <div class="flex items-center mb-6">
+                        <div class="flex">
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 mb-6">"The investment tracking feature is incredible. I can see all my investments in one place and make informed decisions. I've increased my portfolio by 15% since using FinTrack."</p>
+                    <div class="flex items-center">
+                        <img class="h-10 w-10 rounded-full mr-4" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily Rodriguez">
+                        <div>
+                            <h4 class="text-white font-medium">Emily Rodriguez</h4>
+                            <p class="text-gray-400 text-sm">Financial Analyst</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="relative z-10 py-20 bg-gradient-to-b from-gray-900 to-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">Get In Touch</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Have questions? We're here to help you get started.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-gray-800 rounded-xl p-8 border border-gray-700">
+                    <form>
+                        <div class="mb-6">
+                            <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 bg-gray-700 border border-gray-600 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-bold py-3 px-4 rounded-md">Send Message</button>
+                    </form>
+                </div>
+                <div class="bg-gray-800 rounded-xl p-8 border border-gray-700">
+                    <h3 class="text-xl font-bold text-white mb-6">Contact Information</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-map-marker-alt text-indigo-500 mt-1"></i>
+                            </div>
+                            <div class="ml-3 text-gray-300">
+                                <p>Vandalur-Kelambakkam Road</p>
+                                <p>Chennai, 600048</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-envelope text-indigo-500 mt-1"></i>
+                            </div>
+                            <div class="ml-3 text-gray-300">
+                                <p>anishasattwik@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-phone text-indigo-500 mt-1"></i>
+                            </div>
+                            <div class="ml-3 text-gray-300">
+                                <p>+91 9800295650</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h4 class="text-lg font-medium text-white mb-4">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-white">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white">
+                                <i class="fab fa-facebook text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative z-10 bg-black text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="logo.png" alt="FinTrack Logo" class="h-8 w-8 mr-2">
+                        <span class="text-xl font-bold">SUVRITT</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">Your complete financial management solution.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium mb-4">Product</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#features" class="text-gray-400 hover:text-white">Features</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white">Pricing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">API</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Integrations</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Guides</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Support</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">About</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 FinTrack. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="landing.js"></script>
+</body>
+</html>
